@@ -1,0 +1,108 @@
+<?php
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ */
+ 
+function PROFILENAME_install() 
+{
+  PROFILENAME_install_theme();
+  PROFILENAME_add_default_text_formats();
+}
+ 
+/**
+ * Activate theme_default and admin theme
+ *
+ */
+ 
+function PROFILENAME_install_theme() 
+{
+	$enable = array(
+	  'theme_default' => 'aramith_theme',
+	  'admin_theme' => 'rubik',
+	  //'zen'
+	);
+	theme_enable($enable);
+	 
+	foreach ($enable as $var => $theme) 
+	{
+	  if (!is_numeric($var)) 
+	  {
+		variable_set($var, $theme);
+	  }
+	}
+ 
+	// Disable the default Bartik theme
+	theme_disable(array('bartik'));
+	
+
+}
+
+/**
+ * Add 2 text formats : Filtered HTML and Full HTML
+ *
+ */
+
+function PROFILENAME_add_default_text_formats()
+{
+	// Add text formats.
+	$filtered_html_format = array(
+		'format' => 'filtered_html',
+		'name' => 'Filtered HTML',
+		'weight' => 0,
+		'filters' => array(
+			// URL filter.
+			'filter_url' => array(
+			'weight' => 0,
+			'status' => 1,
+			),
+			
+			// HTML filter.
+			 'filter_html' => array(
+			 'weight' => 1,
+			 'status' => 1,
+			 ),
+			 
+			 // Line break filter.
+			 'filter_autop' => array(
+			 'weight' => 2,
+			 'status' => 1,
+			 ),
+			 
+			 // HTML corrector filter.
+			 'filter_htmlcorrector' => array(
+			 'weight' => 10,
+			 'status' => 1,
+			 ),
+		 ),
+	 );
+	 $filtered_html_format = (object) $filtered_html_format;
+	 filter_format_save($filtered_html_format);
+	 
+	$full_html_format = array(
+		 'format' => 'full_html',
+		 'name' => 'Full HTML',
+		 'weight' => 1,
+		 'filters' => array(
+		  	 // URL filter.
+			 'filter_url' => array(
+			 'weight' => 0,
+			 'status' => 1,
+			 ),
+			 // Line break filter.
+			 'filter_autop' => array(
+			 'weight' => 1,
+			 'status' => 1,
+			 ),
+			 // HTML corrector filter.
+			 'filter_htmlcorrector' => array(
+			 'weight' => 10,
+			 'status' => 1,
+			 ),
+		 ),
+	 );
+	 $full_html_format = (object) $full_html_format;
+	 filter_format_save($full_html_format);
+} 

@@ -1,0 +1,57 @@
+/* This file will hold styles for the mobile version of your website (mobile first). */
+/* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
+/*
+#zone-branding.zone.zone-branding.clearfix.container-12
+{
+  border: thin solid blue;
+  
+  
+}*/
+
+#main-menu ul {
+ padding:10px;
+ margin:0;
+ list-style-type:none;
+ }
+
+
+#main-menu li {
+ margin-left:1px;
+ float:left; 
+ }
+
+ 
+#main-menu li  
+{
+	 display:block;
+	 float:left;   
+	 width:120px;
+	 height: 500px;
+	 background-color:#4D4948;
+	 color:black;
+	 text-decoration:none;
+	 text-align:center;
+	 padding:5px;
+	 border:0px solid;
+	 margin-right:0.1em;
+	 /*pour avoir un effet "outset" avec IE :*/
+	 border-color:#DCDCDC #696969 #696969 #DCDCDC;
+	 height:39px;
+	 
+}
+ 
+#main-menu li:hover 
+{
+	background-color:#A43123;
+} 
+ 
+.logo-img 
+{
+  float: right;
+   
+}
+
+.js
+{
+	background-color: #E5E3E3;
+}

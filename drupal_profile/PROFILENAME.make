@@ -1,0 +1,120 @@
+core = 7.x
+api = 2
+projects[drupal][version] = 7
+
+; Modules
+; -------
+projects[auto_nodetitle][subdir] = "contrib"
+projects[context][type] = "module"
+projects[context][subdir] = "contrib"
+projects[countries][type] = "module"
+projects[countries][subdir] = "contrib"
+projects[ctools][type] = "module"
+projects[ctools][subdir] = "contrib"
+projects[ddblock][type] = "module"
+projects[ddblock][subdir] = "contrib"
+projects[devel][type] = "module"
+projects[devel][subdir] = "contrib"
+projects[diff][type] = "module"
+projects[diff][subdir] = "contrib"
+projects[ds][type] = "module"
+projects[ds][subdir] = "contrib"
+projects[entity][type] = "module"
+projects[entity][subdir] = "contrib"
+projects[entity_autocomplete][type] = "module"
+projects[entity_autocomplete][subdir] = "contrib"
+projects[galleria][type] = "module"
+projects[galleria][subdir] = "contrib"
+projects[google_analytics][type] = "module"
+projects[google_analytics][subdir] = "contrib"
+projects[gtranslate][type] = "module"
+projects[gtranslate][subdir] = "contrib"
+projects[features][type] = "module"
+projects[features][subdir] = "contrib"
+projects[field_group][subdir] = "contrib"
+projects[i18n][type] = "module"
+projects[i18n][subdir] = "contrib"
+projects[imce][subdir] = "contrib"
+projects[imce_wysiwyg][subdir] = "contrib"
+projects[libraries][type] = "module"
+projects[libraries][subdir] = "contrib"
+projects[link][type] = "module"
+projects[link][subdir] = "contrib"
+projects[omega_tools][type] = "module"
+projects[omega_tools][subdir] = "contrib"
+projects[panels][type] = "module"
+projects[panels][subdir] = "contrib"
+projects[pathauto][type] = "module"
+projects[pathauto][subdir] = "contrib"
+projetcs[sharethis][type] = "module"
+projects[sharethis][subdir] = "contrib"
+projetcs[strongarm][type] = "module"
+projects[strongarm][subdir] = "contrib"
+projects[superfish][type] = "module"
+projects[superfish][subdir] = "contrib"
+projects[superfish][version] = 1.9-beta4
+projects[token][subdir] = "contrib"
+projects[variable][type] = "module"
+projects[variable][subdir] = "contrib"
+projects[views][type] = "module"
+projects[views][subdir] = "contrib"
+projects[views_slideshow][type] = "module"
+projects[views_slideshow][subdir] = "contrib"
+projects[views_ticker][type] = "module"
+projects[views_ticker][subdir] = "contrib"
+projects[skinr][type] = "module"
+projects[skinr][subdir] = "contrib"
+projects[conditional_styles][type] = "module"
+projects[conditional_styles][subdir] = "contrib"
+projects[delta][type] = "module"
+projects[delta][subdir] = "contrib"
+projects[context][type] = "module"
+projects[context][subdir] = "contrib"
+projects[wysiwyg][type] = "module"
+projects[wysiwyg][subdir] = "contrib"
+projects[xmlsitemap][type] = "module"
+projects[xmlsitemap][subdir] = "contrib"
+
+; Themes
+; ------
+projects[omega][type] = "theme"
+projects[omega][subdir] = "contrib"
+projects[rubik][type] = "theme"
+projects[rubik][subdir] = "contrib"
+projects[tao][type] = "theme"
+projects[tao][subdir] = "contrib"
+
+; Libraries
+; ---------
+; TinyMCE Editor
+libraries[tinymce][type] = "libraries"
+libraries[tinymce][download][type] = "get"
+libraries[tinymce][download][url] = "http://downloads.sourceforge.net/project/tinymce/TinyMCE/3.3.9.2/tinymce_3_3_9_2.zip"
+libraries[tinymce][destination] = "libraries"
+
+; CKEDITOR Editor
+libraries[ckeditor][type] = "libraries"
+libraries[ckeditor][download][type] = "get"
+libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.2/ckeditor_3.6.2.tar.gz"
+libraries[ckeditor][destination] = "libraries"
+
+libraries[superfish][type] = "libraries"
+libraries[superfish][download][type] = "git"
+libraries[superfish][download][url] = "https://github.com/mehrpadin/Superfish-for-Drupal.git"
+libraries[superfish][download][branch] = master
+
+libraries[json2][type] = "libraries"
+libraries[json2][download][type] = "git"
+libraries[json2][download][url] = "https://github.com/douglascrockford/JSON-js.git"
+libraries[json2][download][branch] = master
+
+libraries[jquery.cycle][type] = "libraries"
+libraries[jquery.cycle][download][type] = "file"
+libraries[jquery.cycle][download][url] = "http://malsup.github.com/jquery.cycle.all.js"
+libraries[jquery.cycle][directory_name] = "jquery.cycle"
+
+libraries[jquery][download][type] = "file"
+libraries[jquery][download][url] = "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+
+libraries[jqueryui][download][type] = "file"
+libraries[jqueryui][download][url] = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"

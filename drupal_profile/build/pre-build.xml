@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="pre-build" default="build">
+
+    <target name="build" depends="load-properties, setup-dirs, update_makefile">
+
+    </target>
+
+    <target name="update_makefile">
+        <reflexive>
+            <fileset dir="${project.basedir}">
+                <include pattern="*.make" />
+            </fileset>
+            <filterchain>
+                <replacetokens begintoken="##" endtoken="##">
+                    <token key="refspec" value="${env.GERRIT_REFSPEC}" />
+                </replacetokens>
+            </filterchain>
+        </reflexive>
+    </target>
+
+    <target name="load-properties">
+        <php function="dirname" returnProperty="phing.dir">
+            <param value="${phing.file}"/>
+        </php>
+
+        <property name="project.basedir" value="${phing.dir}" />
+
+        <!-- Use condition instead of unless property as we cannot unset properties in Phing -->
+        <if>
+            <or>
+                <!-- `istrue` evaluates to true is value is not set we need to check
+             `isset` as well -->
+                <not><istrue value="${project.properties.loaded}" /></not>
+                <not><isset property="project.properties.loaded" /></not>
+            </or>
+            <then>
+                <!-- By default Jenkins runs Phing from the directory containing the build
+              file.  If this file is located in a subdirectory - e.g. when using Phing Drupal as a submodule - we need to reset the project basedir and reload properties.
+
+              NB: This only works if the subdirectory is directly within the Drupal
+              root directory. -->
+                <if>
+                    <!-- If `build.properties` exists then assume we have a
+                 project root directory -->
+                    <available file="${project.basedir}/../build.properties"/>
+                    <then>
+                        <resolvepath propertyName="project.basedir"
+                                     file="${project.basedir}/../"/>
+                    </then>
+                </if>
+
+                <!-- By default use default properties file
+               `build.default.properties` -->
+                <property name="project.properties.file"
+                          value="${phing.dir}/build.default.properties" />
+                <!-- Load the default properties.
+        Override in case `load-properties` are called multiple times. -->
+                <property file="${project.properties.file}" override="true" />
+
+                <!-- Allow override using `build.properties` in build file
+               directory -->
+                <available file="${phing.dir}/build.properties"
+                           property="project.properties.file"
+                           value="${phing.dir}/build.properties" />
+                <!-- Allow override using `build.properties` in project base
+               directory -->
+                <available file="${project.basedir}/build.properties"
+                           property="project.properties.file"
+                           value="${project.basedir}/build.properties" />
+
+                <!-- Load the overriding properties. -->
+                <property file="${project.properties.file}" override="true" />
+
+                <!-- Set property to prevent unnecessary additional invocations of this target -->
+                <property name="project.properties.loaded" value="true" />
+            </then>
+        </if>
+    </target>
+
+    <!-- ### Setup directories
+
+Define working directories - where the individual parts of the build are and
+should be located. These are used in other targets.
+
+This is part of the initialization of the build. This target should only be
+called from `init` target. -->
+    <target name="setup-dirs"
+            depends="load-properties">
+        <if>
+            <isset property="drupal.make.dir"/>
+            <then>
+                <property name="project.drupal.dir"
+                          value="${project.basedir}/${drupal.make.dir}" />
+            </then>
+            <else>
+                <property name="project.drupal.dir"
+                          value="${project.basedir}" />
+            </else>
+        </if>
+
+        <property name="project.sitesdir"
+                  value="${project.drupal.dir}/${project.code.dir}" />
+        <property name="project.builddir"
+                  value="${project.basedir}/build" />
+        <property name="project.toolsdir"
+                  value="${project.builddir}/tools" />
+        <property name="project.coveragedir"
+                  value="${project.builddir}/coverage" />
+        <property name="project.logdir"
+                  value="${project.builddir}/logs" />
+        <property name="project.testdir"
+                  value="${project.builddir}/tests" />
+    </target>
+
+
+</project>
