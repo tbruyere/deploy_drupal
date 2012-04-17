@@ -5,3 +5,14 @@ Description
 -----------
 
 Deployement Drupal with Gerrit, Jenkins and Aegir
+
+Use
+---
+
+http://drupal.org/project/phingdrushtask
+http://reload.github.com/phing-drupal-template/
+https://github.com/reload/phing-drupal-template
+https://github.com/reload/phing-drupal-template
+http://drupalcode.org/project/drush.git/commit/2c7c7c9ddee69b67d3c06001c75497aa8a0f9bb7
+http://storify.com/drupol/gerrit-jenkins-aegir-and-drupal
+
